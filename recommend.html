@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommend Books</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+
+    <style>
+         body{
+         background-image : url("https://mcdn.wallpapersafari.com/medium/59/70/hqVMFY.jpg");
+
+         }
+        h1 {
+            color: white;
+            font-size: 40px;
+            margin-top: 50px;
+        }
+        .head {
+            color: red;
+            font-size: 30px;
+        }
+        .box {
+            margin-top: 40px;
+        }
+        img {
+            width: 100%;
+        }
+        #textBelow {
+            color: white;
+            margin-top: 40px;
+        }
+        .cd {
+            padding-right: 120px;
+        }
+        nav {
+            height: 60px;
+        }
+        a {
+            color: white;
+            font-size: 20px;
+        }
+        #title {
+            margin-right: 620px;
+            margin-left: 70px;
+        }
+        #sticky {
+       background-color: rgba(1, 106, 106, 0.896) ;
+       width : 100%;
+       margin-top: 25px;
+        }
+        .error {
+            color: red;
+            margin-top: 50px;
+            font-size : 30px;
+        }
+        #head-image{
+       width : 60px;
+       height : 30px;
+       margin-left : 30px;
+        }
+    </style>
+</head>
+<body>
+
+   <nav class="navbar" id="sticky">
+       <div class="navbar-brand head"  id="title"><i><img id="head-image" src="https://img.freepik.com/free-vector/gradient-library-logo-template_23-2149330625.jpg?size=626&ext=jpg&ga=GA1.1.972562491.1716361483&semt=ais_user" alt="Book Image"></i>
+           My Book recommender </div>
+       <ul class="nav navbar-nav">
+           <li><a href="/">Home</a></li>
+           <li><a href="/recommend">Recommend</a></li>
+           <li><a href="/contact">Contact</a></li>
+       </ul>
+   </nav>
+
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <h1>Recommend Books</h1>
+          </div>
+          <form action="recommend_books" method="post">
+              <input name="user_input" type="text" class="form-control"><br>
+              <input type="submit" class="btn btn-lg btn-warning">
+          </form>
+
+          {% if error %}
+              <p class="error">{{ error }}</p>
+          {% endif %}
+
+          {% if data %}
+              {% for i in data %}
+                  <div class="col-md-3 box">
+                      <div class="card cd">
+                          <div class="card-body">
+                               <a href="https://www.youtube.com/results?search_query={{ i[0] }}"><img src={{i[2]}}></a>
+                              <div id="textBelow">
+                                  <h4><a style="color: orange" href="{{ i[3] }}">{{ i[0] }}</a></h4>
+                                  <h5 style="color: red">{{ i[1] }}</h5>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              {% endfor %}
+          {% endif %}
+      </div>
+  </div>
+
+</body>
+</html>

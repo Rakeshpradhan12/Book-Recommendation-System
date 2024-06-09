@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>recommend books</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+
+    <style>
+         body{
+         background-image : url("https://mcdn.wallpapersafari.com/medium/59/70/hqVMFY.jpg");
+
+         }
+        h1{
+          color : white;
+          font-size : 40px;
+          margin-top : 50px;
+
+        }
+        .head{
+        color : red;
+        font-size : 30px;
+
+        }
+
+        .box{
+         margin-top : 40px;
+
+        }
+        img{
+        width :100%;
+        }
+
+        #textBelow{
+         color : white;
+         margin-top : 40px;
+        }
+        .cd{
+         padding-right : 120px;
+        }
+        nav{
+        height : 60px ;
+        }
+        a {
+          color : white;
+          font-size : 20px;
+        }
+        #title{
+        margin-right : 620px;
+        margin-left : 70px;
+        }
+      #sticky {
+      background-color: rgba(1, 106, 106, 0.896) ;
+       width : 100%;
+       margin-top: 25px;
+      }
+        #head-image{
+       width : 60px;
+       height : 30px;
+       margin-left : 30px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<nav class="navbar" id="sticky">
+ <div class="navbar-brand head"  id="title">
+    <i><img id="head-image" src="https://img.freepik.com/free-vector/gradient-library-logo-template_23-2149330625.jpg?size=626&ext=jpg&ga=GA1.1.972562491.1716361483&semt=ais_user" alt="Book Image"></i>
+     My Book recommender </div>
+
+       <ul class="nav navbar-nav">
+           <li><a href="/">Home</a></li>
+           <li><a href="/recommend">Recommend</a></li>
+           <li><a href="/contact">contact</a></li>
+
+      </ul>
+   </nav>
+
+
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <h1>Top 50 books</h1>
+          </div>
+
+          {% for i in range(book_name|length) %}
+
+             <div class="col-md-3 box" >
+              <div class="card cd">
+                  <div class="card-body">
+                      <a href="https://www.youtube.com/results?search_query={{book_name[i]}}"><img src={{image[i]}}></a>
+                      <div id="textBelow">
+                      <h4 ><a style="color : orange" href="{{booksetgo_url[i]}}">{{book_name[i]}}</a></h4>
+                      <h5 style="color : red">{{  author[i] }}</h5>
+                      <p>votes -<i style="color : yellow"> {{votes[i] }}</i></p>
+                      <p>Ratings - <i style="color : green">{{rating[i] | round(2)}}</i>  </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          {% endfor %}
+
+      </div>
+
+  </div>
+
+</body>
+</html>
